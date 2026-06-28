@@ -43,7 +43,6 @@ Dự án sử dụng bộ dữ liệu mống mắt **IIT Delhi (IITD) Iris Datab
     iris-recognition/
     ├── Source/
     │   ├── dataloader.py
-    │   ├── eval.py
     │   ├── models.py
     │   ├── training.py
     │   └── webcam_demo.py
