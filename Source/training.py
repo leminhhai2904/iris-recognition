@@ -10,7 +10,9 @@ from torchvision import transforms
 
 from src.models import DeepIrisResNet
 from src.dataloader import IITDIrisDataset
+import argparse
 
+ROOT_DIR = "/kaggle/input/datasets/cminhhuymai/iitd-iris/"
 
 def create_stratified_splits(dataset, test_samples=4, val_samples=1):
     """
@@ -49,7 +51,7 @@ def train_model():
         ]
     )
 
-    dataset = IITDIrisDataset(transform=transform)
+    dataset = IITDIrisDataset(transform=transform, root_dir=ROOT_DIR)
 
     # 4 for test, 1 for validation, 5 for training (per person)
     train_dataset, val_dataset, test_dataset = create_stratified_splits(
@@ -167,4 +169,7 @@ def train_model():
 
 
 if __name__ == "__main__":
+    parser.add_argument("--data_path", default="/kaggle/input/datasets/cminhhuymai/iitd-iris/", help="Path to data folder")
+    args = parser.parse_args()
+    ROOT_DIR = args.data_path
     train_model()
